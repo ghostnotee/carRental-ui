@@ -11,6 +11,7 @@ import { ColourComponent } from './components/colour/colour.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { from } from 'rxjs';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { RentalDetailComponent } from './components/rental-detail/rental-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     ColourComponent,
     CustomerComponent,
     CarDetailComponent,
+    RentalDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
