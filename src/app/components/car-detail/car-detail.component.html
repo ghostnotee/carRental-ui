@@ -14,10 +14,10 @@
       <th>Açıklama</th>
     </tr>
   </thead>
-  <tr *ngFor="let cardetail of carDetails">
+  <tr routerLink="/cars/cardetail/{{cardetail.carId}}" *ngFor="let cardetail of carDetails">
     <td> {{cardetail.carId}} </td>
-    <td> {{cardetail.carModelName}} </td>
     <td> {{cardetail.carBrandName}} </td>
+    <td> {{cardetail.carModelName}} </td>
     <td> {{cardetail.carColourName}} </td>
     <td> {{cardetail.dailyPrice}} ₺ </td>
     <td> {{cardetail.description}} </td>

@@ -1,0 +1,14 @@
+<h2>Araç Detayları</h2>
+<div *ngFor="let detail of specificCarDetail" class="card" style="width: 18rem;">
+  <img *ngFor="let photo of carImages" src="https://localhost:5001/{{photo.imagePath}}" alt=" {{photo.carImageId}}">
+  <div class="card-body">
+    <h5 class="card-title"> {{detail.carModelName}} </h5>
+    <p class="card-text"> {{detail.description}}
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> {{detail.carBrandName}} </li>
+    <li class="list-group-item"> {{detail.carColourName}} </li>
+    <li class="list-group-item"> {{detail.dailyPrice}} ₺</li>
+  </ul>
+</div>

@@ -9,6 +9,7 @@ import { ColourService } from 'src/app/services/colour.service';
 })
 export class ColourComponent implements OnInit {
   colours: Colour[] = [];
+  currentColour: Colour;
 
   constructor(private colourService: ColourService) {}
 
@@ -20,5 +21,17 @@ export class ColourComponent implements OnInit {
     this.colourService.getColours().subscribe((response) => {
       this.colours = response.data;
     });
+  }
+
+  setCurrentColour(colour: Colour) {
+    this.currentColour = colour;
+  }
+
+  getCurrentColourClass(colour: Colour) {
+    if (colour == this.currentColour) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
   }
 }
