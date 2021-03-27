@@ -28,7 +28,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     RentalDetailComponent,
     SpecificCarDetailComponent,
     VatAddedPipe,
-    FilterPipe,
+    FilterPipe
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
