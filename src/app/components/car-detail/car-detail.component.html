@@ -3,6 +3,31 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
+
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araç ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Aramak için yazın...">
+</div>
+
+<div *ngIf="filterText.length>1" class="alert-success">
+  {{filterText}} arandı
+</div>
+
+Filtreleme
+<div class="row">
+  <div class="col-sm-4">
+    <select [(ngModel)]="brandId" class="form-select">
+      <option *ngFor="let brand of brands" [value]="brand.brandId"> {{brand.brandName}} </option>
+    </select>
+  </div>
+  <div class="col-sm-4">
+    <select [(ngModel)]="colourId" class="form-select">
+      <option *ngFor="let colour of colours" [value]="colour.colourId">{{colour.colourName}}</option>
+    </select>
+  </div>
+  <button (click)="customFiltering(brandId,colourId)" class="btn btn-success col-sm-2">Filtrele</button>
+</div>
+
 <table *ngIf="dataLoaded==true" class="table">
   <thead>
     <tr>
@@ -10,16 +35,18 @@
       <th>Model</th>
       <th>Marka</th>
       <th>Renk</th>
-      <th>Günlük Kira Bedeli</th>
+      <th>Günlük Fiyat</th>
+      <th>Kdv'li Fiyat</th>
       <th>Açıklama</th>
     </tr>
   </thead>
-  <tr routerLink="/cars/cardetail/{{cardetail.carId}}" *ngFor="let cardetail of carDetails">
+  <tr routerLink="/cars/cardetail/{{cardetail.carId}}" *ngFor="let cardetail of carDetails |filter:filterText">
     <td> {{cardetail.carId}} </td>
-    <td> {{cardetail.carBrandName}} </td>
     <td> {{cardetail.carModelName}} </td>
+    <td> {{cardetail.carBrandName }} </td>
     <td> {{cardetail.carColourName}} </td>
     <td> {{cardetail.dailyPrice}} ₺ </td>
+    <td> {{cardetail.dailyPrice |vatAdded:10 |currency:'₺'}} </td>
     <td> {{cardetail.description}} </td>
   </tr>
 </table>
